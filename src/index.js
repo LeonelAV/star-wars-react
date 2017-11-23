@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import PlayerOne from './components/PlayerOne';
 import PlayerTwo from './components/PlayerTwo';
 import Score from './components/Score';
+import Gold from './components/Gold';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <PlayerTwo />
         </div>
         <Score />
+        <Gold />
       </div>
     );
   }
