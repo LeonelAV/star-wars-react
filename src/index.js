@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PlayerOne from './components/PlayerOne';
 import PlayerTwo from './components/PlayerTwo';
-
+import Score from './components/Score';
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
           <h2 style={{color:"white", fontFamily:"Lato, sans-Serif", fontWeight:400}}>VS</h2>
           <PlayerTwo />
         </div>
+        <Score />
       </div>
     );
   }
