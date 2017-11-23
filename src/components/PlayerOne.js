@@ -8,8 +8,8 @@ class PlayerOne extends Component {
     return (
       <div style={style}>
         <h2 style={{color:"blue", margin: 0}}>Player 1</h2>
-        <h2 style={{color:"white", margin: 0}}>Luke Skywalker</h2>
-        <h4 style={{color:"white", margin: 0}}>Human</h4>
+        <h2 style={{color:"white", margin: 0, fontWeight:400}}>Luke Skywalker</h2>
+        <h4 style={{color:"white", margin: 0, fontWeight:400}}>Human</h4>
       </div>
     )
   }
