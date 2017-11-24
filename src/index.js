@@ -9,6 +9,7 @@ import PlayButton from './components/PlayButton';
 import ChangePlayers from './components/ChangePlayers';
 import VehiclePlayerOne from './components/VehiclePlayerOne';
 import VehiclePlayerTwo from './components/VehiclePlayerTwo';
+import DataVehicleOne from './components/DataVehicleOne';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
         <ChangePlayers />
         <VehiclePlayerOne />
         <VehiclePlayerTwo />
+        <DataVehicleOne />
       </div>
     );
   }
