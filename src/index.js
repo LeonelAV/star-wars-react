@@ -14,7 +14,7 @@ class App extends Component {
       <div  className="App">
         <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:100}}>
           <PlayerOne />
-          <h2 style={{color:"white", fontFamily:"Lato, sans-Serif", fontWeight:400}}>VS</h2>
+          <h2 style={{color:"white", fontWeight:400}}>VS</h2>
           <PlayerTwo />
         </div>
         <Score />

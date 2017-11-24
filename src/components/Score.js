@@ -5,7 +5,6 @@ class Score extends Component {
     let style = {
       fontSize:80,
       color: "white",
-      fontFamily:"Lato, sans-Serif",
       textAlign: "center",
       letterSpacing:8,
       position: "relative",
