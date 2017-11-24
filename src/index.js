@@ -4,6 +4,7 @@ import PlayerOne from './components/PlayerOne';
 import PlayerTwo from './components/PlayerTwo';
 import Score from './components/Score';
 import Gold from './components/Gold';
+import Distance from './components/Distance'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         </div>
         <Score />
         <Gold />
+        <Distance />
       </div>
     );
   }
