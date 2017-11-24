@@ -7,6 +7,7 @@ import Gold from './components/Gold';
 import Distance from './components/Distance'
 import PlayButton from './components/PlayButton';
 import ChangePlayers from './components/ChangePlayers';
+import VehiclePlayerOne from './components/VehiclePlayerOne';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
         <Distance />
         <PlayButton />
         <ChangePlayers />
+        <VehiclePlayerOne />
       </div>
     );
   }
