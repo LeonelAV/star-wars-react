@@ -11,11 +11,13 @@ import VehiclePlayerOne from './components/VehiclePlayerOne';
 import VehiclePlayerTwo from './components/VehiclePlayerTwo';
 import DataVehicleOne from './components/DataVehicleOne';
 import DataVehicleTwo from './components/DataVehicleTwo';
+import YouWon from './components/YouWon';
 
 class App extends Component {
   render() {
     return (
       <div  className="App">
+        <YouWon />
         <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:100}}>
           <PlayerOne />
           <h2 style={{color:"white", fontWeight:400}}>VS</h2>
