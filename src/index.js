@@ -28,10 +28,16 @@ class App extends Component {
         <Distance />
         <PlayButton />
         <ChangePlayers />
-        <VehiclePlayerOne />
-        <VehiclePlayerTwo />
-        <DataVehicleOne />
-        <DataVehicleTwo />
+
+        <div className="player-one" style={{ position: "relative", left:"5.5%", bottom: 6 }}>
+          <VehiclePlayerOne />
+          <DataVehicleOne />
+        </div>
+
+        <div style={{ position: "relative", right:"1%", bottom: 6 }}>
+          <VehiclePlayerTwo />
+          <DataVehicleTwo />
+        </div>
       </div>
     );
   }
