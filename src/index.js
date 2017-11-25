@@ -7,9 +7,9 @@ import Gold from './components/Gold';
 import Distance from './components/Distance'
 import PlayButton from './components/PlayButton';
 import ChangePlayers from './components/ChangePlayers';
-import VehiclePlayerOne from './components/VehiclePlayerOne';
+
 import VehiclePlayerTwo from './components/VehiclePlayerTwo';
-import DataVehicleOne from './components/DataVehicleOne';
+
 import DataVehicleTwo from './components/DataVehicleTwo';
 import YouWon from './components/YouWon';
 
@@ -28,12 +28,6 @@ class App extends Component {
         <Distance />
         <PlayButton />
         <ChangePlayers />
-
-        <div className="player-one" style={{ position: "relative", left:"5.5%", bottom: 6 }}>
-          <VehiclePlayerOne />
-          <DataVehicleOne />
-        </div>
-
         <div style={{ position: "relative", right:"1%", bottom: 6 }}>
           <VehiclePlayerTwo />
           <DataVehicleTwo />

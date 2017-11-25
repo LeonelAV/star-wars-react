@@ -9,7 +9,8 @@ class YouWon extends Component{
       fontSize: 54, 
       color:"#8BC34A",
       fontFamily:"Lato, sans-serif",
-      fontWeight:"200"
+      fontWeight:"200",
+      display:"none"
     }
     return <h1 style={ style }>YOU WON!!!</h1>
   }}
