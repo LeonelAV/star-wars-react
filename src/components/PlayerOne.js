@@ -5,11 +5,11 @@ import DataVehicleOne from './DataVehicleOne';
 class PlayerOne extends Component {
   constructor(props){
     super(props);
-    this.state = {name:[], id: 0, vehicles:[]}
+    this.state = {name:[], id: 0, vehicles:""}
   }
 
   componentDidMount() {
-    fetch('https://swapi.co/api/people/')
+    fetch('https://swapi.co/api/people/')// API peticion for the player
       .then(results => {
         return results.json();
       }).then(data => {
@@ -22,6 +22,18 @@ class PlayerOne extends Component {
             id: playerIndex,
             vehicles: data.results[playerIndex].vehicles[vehicleIndex]
           })
+          const urlVehicles= this.state.vehicles
+
+     fetch(urlVehicles) //API peticion for the vehicle
+    .then(results => {
+      return results.json();
+  }).then(data => {
+      this.setState({
+        vehicleName: data.name,
+        speed: data.max_atmosphering_speed,
+        cargo: data.cargo_capacity
+      })
+  })
  })
 }
 
@@ -34,10 +46,9 @@ class PlayerOne extends Component {
         <h2 style={{color:"white", margin: 0, fontWeight:400}}>{this.state.name}</h2>
         <h4 style={{color:"white", margin: 0, fontWeight:400}}>Human</h4>
        <div className="player-one" style={{ position: "relative", left:"9.5%", top: "150%", width:"148%" }}>
-         <VehiclePlayerOne />
-         <DataVehicleOne />
+         <VehiclePlayerOne vehicleName= {this.state.vehicleName} />
+         <DataVehicleOne speed= {this.state.speed} cargo={this.state.cargo}/>
         </div>
-
       </div>
     )
   }
