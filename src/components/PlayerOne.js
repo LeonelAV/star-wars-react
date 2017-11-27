@@ -5,11 +5,13 @@ import DataVehicleOne from './DataVehicleOne';
 class PlayerOne extends Component {
   constructor(props){
     super(props);
-    this.state = {name:[], id: 0, vehicles:""}
+    this.state = {name:[], id: 0, vehicles:"", vehicleName: "", speed:"", cargo: ""}
   }
 
   componentDidMount() {
-    fetch('https://swapi.co/api/people/')// API peticion for the player
+    let randomPage= Math.floor(Math.random()*9) + 1 // this is a random number to choose one page of the API, there 9 in total
+    console.log(randomPage)
+    fetch('https://swapi.co/api/people/?page=' + randomPage)// API peticion for the player
       .then(results => {
         return results.json();
       }).then(data => {
