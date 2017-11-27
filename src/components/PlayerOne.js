@@ -8,38 +8,46 @@ class PlayerOne extends Component {
     this.state = {name:[], id: 0, vehicles:"", vehicleName: "", speed:"", cargo: ""}
   }
 
-  componentDidMount() {
+ componentDidMount() {
     let randomPage= Math.floor(Math.random()*9) + 1 // this is a random number to choose one page of the API, there 9 in total
-    console.log(randomPage)
     fetch('https://swapi.co/api/people/?page=' + randomPage)// API peticion for the player
       .then(results => {
         return results.json();
-      }).then(data => {
-      	  let ourArray = data.results.length // Total number of players we get from the Api
-      	  let playerIndex = Math.floor(Math.random()*ourArray)// to choose a random player
-      	  let lenghtArrVehicles= data.results[playerIndex].vehicles.length
-      	  let vehicleIndex = Math.floor(Math.random()*lenghtArrVehicles)
-          this.setState({ 
-            name: data.results[playerIndex].name, 
-            id: playerIndex,
-            vehicles: data.results[playerIndex].vehicles[vehicleIndex]
-          })
-          const urlVehicles= this.state.vehicles
+       })
+      .then(data => {
+        let ourArray = data.results.length // Total number of players we get from the Api
+        let playerIndex = Math.floor(Math.random()*ourArray)// to choose a random player
+        let lenghtArrVehicles= data.results[playerIndex].vehicles.length
+        let vehicleIndex = Math.floor(Math.random()*lenghtArrVehicles)
+        this.setState({ 
+          name: data.results[playerIndex].name, 
+          id: playerIndex,
+          vehicles: data.results[playerIndex].vehicles[vehicleIndex]
+        })
 
+     const urlVehicles=this.state.vehicles
+     
      fetch(urlVehicles) //API peticion for the vehicle
     .then(results => {
       return results.json();
-  }).then(data => {
+      })
+     .catch(error => {
+       console.log('Is afucking error');
+     })
+    .then(data => {
+      if(data == undefined) {
+        return componentDidMount();
+      } else {
       this.setState({
         vehicleName: data.name,
         speed: data.max_atmosphering_speed,
         cargo: data.cargo_capacity
       })
+  }
   })
  })
 }
 
- 
 
   render(){
     return (
