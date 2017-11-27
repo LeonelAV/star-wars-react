@@ -35,15 +35,11 @@ class PlayerOne extends Component {
        console.log('Is afucking error');
      })
     .then(data => {
-      if(data == undefined) {
-        return componentDidMount();
-      } else {
       this.setState({
         vehicleName: data.name,
         speed: data.max_atmosphering_speed,
         cargo: data.cargo_capacity
       })
-  }
   })
  })
 }
