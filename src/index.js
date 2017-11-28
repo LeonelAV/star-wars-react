@@ -44,21 +44,28 @@ class App extends Component {
         let arrLenght = data.results.length // Total number of players we get from the Api
         let playerIndex = Math.floor(Math.random()*arrLenght)// to choose a random player
         let dataPlayers= data.results
-        console.log(playerIndex)
-        console.log(data.results[playerIndex].vehicles.length)
-         for(let value in dataPlayers){
-          if(dataPlayers.vehicles === []) {
-            dataPlayers.splice(1)
-           } 
-         }
+        // console.log(playerIndex)
+        // console.log(data.results[playerIndex].vehicles.length)
+        function isNumber(obj) {
+          return obj.length !== 0
+        }
+        function filteredByName(item){
+          if(isNumber(item.vehicles)){
+            return true
+          }
+          return false
+        }
+        let arrByVehicle= dataPlayers.filter(filteredByName)
+        console.log(dataPlayers)
+        console.log(arrByVehicle)
         
         this.setState({ 
           playerTwo: dataPlayers[playerIndex]
         })
-        console.log(playerIndex)
-        console.log(data.results[playerIndex].vehicles.length)
-        console.log(data.results)
-        console.log(this.state.playerTwo) 
+        // console.log(playerIndex)
+        // console.log(data.results[playerIndex].vehicles.length)
+        // console.log(data.results)
+       // console.log(this.state.playerTwo) 
   })
     }
 
