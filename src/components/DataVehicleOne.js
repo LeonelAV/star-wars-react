@@ -9,8 +9,8 @@ class DataVehicleOne extends Component{
           <h2>144 trips</h2>
         </div>
         <div style ={{ color:"white" }}>
-          <h4>Speed: {this.props.speed} km/h</h4>
-          <h4>cargo: {this.props.cargo} kg</h4>
+          <h4>Speed: {this.props.speedOne} km/h</h4>
+          <h4>cargo: {this.props.cargoOne} kg</h4>
         </div>
       </div>
     )

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import VehiclePlayerOne from './VehiclePlayerOne';
-import DataVehicleOne from './DataVehicleOne';
 
 class PlayerOne extends Component {
   // constructor(props){
@@ -51,10 +49,6 @@ class PlayerOne extends Component {
         <h2 style={{color:"#2196F3", margin: 0}}>Player 1</h2>
         <h2 style={{color:"white", margin: 0, fontWeight:400}}>{this.props.nameOne.name}</h2>
         <h4 style={{color:"white", margin: 0, fontWeight:400}}>Human</h4>
-       <div className="player-one" style={{ position: "relative", left:"9.5%", top: "150%", width:"148%" }}>
-         <VehiclePlayerOne vehicleName=""  />
-         <DataVehicleOne speed= "" cargo=""/>
-        </div>
       </div>
     )
   }
