@@ -41,11 +41,8 @@ class App extends Component {
         return results.json();
        })
       .then(data => {
-        let arrLenght = data.results.length // Total number of players we get from the Api
-        let playerIndex = Math.floor(Math.random()*arrLenght)// to choose a random player
         let dataPlayers= data.results
-        // console.log(playerIndex)
-        // console.log(data.results[playerIndex].vehicles.length)
+
         function isNumber(obj) {
           return obj.length !== 0
         }
@@ -55,17 +52,16 @@ class App extends Component {
           }
           return false
         }
-        let arrByVehicle= dataPlayers.filter(filteredByName)
+        let arrByVehicle= dataPlayers.filter(filteredByName)// used to filter the array of people, we don't want those ones who doesn't have vehicles
+        let arrLenght=arrByVehicle.length //The length of the filtered array(only people with vehicles is in)
+        let playerIndex= Math.floor(Math.random()*arrLenght)// choose a random vehicle from the filtered array
         console.log(dataPlayers)
         console.log(arrByVehicle)
+        console.log(arrLenght)
         
         this.setState({ 
-          playerTwo: dataPlayers[playerIndex]
-        })
-        // console.log(playerIndex)
-        // console.log(data.results[playerIndex].vehicles.length)
-        // console.log(data.results)
-       // console.log(this.state.playerTwo) 
+          playerTwo: arrByVehicle[playerIndex]
+        }) 
   })
     }
 
