@@ -16,21 +16,25 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { hours:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: []}
+    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0}
     this.clickHandler = this.clickHandler.bind(this)
   }
 
   clickHandler(){
     console.log('button clicked')
-    let hours = Math.round(Math.round((this.state.amountOfGold / this.state.cargoOne) + 0.5))
-    this.setState({hours: hours})
-    console.log(hours)
+    let tripsOne = Math.round(Math.round((this.state.amountOfGold / this.state.cargoOne) + 0.5))
+    let hoursOne= (tripsOne*2 + tripsOne*(this.state.distance/this.state.speedOne)).toFixed(2)
+    let tripsTwo = Math.round(Math.round((this.state.amountOfGold / this.state.cargoTwo) + 0.5))// Para arredondar para cima sempre
+    let hoursTwo= (tripsTwo*2 + tripsTwo*(this.state.distance/this.state.speedTwo)).toFixed(2)
+    this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo})
+    console.log(tripsOne)
+    console.log(tripsTwo)
   }
 
   componentDidMount(){
     /******AMOUNT OF GOLD and DISTANCE ******/
-    let goldQuantity = Math.floor(Math.random()*100)
-    let distance= Math.floor(Math.random()*2000)
+    let goldQuantity = Math.floor(Math.random()*100) +1
+    let distance= Math.floor(Math.random()*2000) + 1
     this.setState({ amountOfGold: goldQuantity, distance: distance})
  
     let apiValidPages=[1,3,4,5,7,8] // the pages 2, 6 and 9 of our API doesn´t have any people with vehicles available
@@ -136,11 +140,11 @@ class App extends Component {
         <ChangePlayers />
         <div className="player-one" style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
-         <DataVehicleOne hours={this.state.hours} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
+         <DataVehicleOne hoursOne={this.state.hoursOne} tripsOne={this.state.tripsOne} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
         </div>
         <div style={{ position: "relative", right:"1%", bottom: 6 }}>
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
-          <DataVehicleTwo speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
+          <DataVehicleTwo hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>
       </div>
     )

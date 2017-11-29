@@ -5,8 +5,8 @@ class DataVehicleTwo extends Component{
     return (
       <div style={{ lineHeight:"0.3",position:"absolute", top:2, right:"20%" }}>
         <div style={{color:"red"}}>
-          <h2>3.435 hours</h2>
-          <h2>144 trips</h2>
+          <h2>{this.props.hoursTwo} hours</h2>
+          <h2>{this.props.tripsTwo} trips</h2>
         </div>
         <div style ={{ color:"white" }}>
           <h4>Speed: {this.props.speedTwo} km/h</h4>
