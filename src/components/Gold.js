@@ -13,7 +13,7 @@ class Gold extends Component{
   render(){
     return (
       <div style={{ position:"relative", left:"45%" }}>
-        <img style={{transform: "rotate(-90deg)", width:65, float: "left"}} src={"../gold.png"}/>
+        <img alt="gold" style={{transform: "rotate(-90deg)", width:65, float: "left"}} src={"../gold.png"}/>
         <h2 style={{float:"left", marginLeft:20, color:"white", fontWeight:"200"}}>{this.state.amountOfGold}kg</h2>
       </div>
     )
