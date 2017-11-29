@@ -16,13 +16,15 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { playerOne: [], vehicleOneName:'vehicleOneName', speedOne:0, cargoOne:0, playerTwo: []}
+    this.state = { playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: []}
   }
 
   componentDidMount(){
-    let apiValidPages=[1,2,3,4,5,7,8,9] // the page 6 of our API is the only one who doen't have any people with vehicles available
-    let randomIndexOne=Math.floor(Math.random()*9)
-    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 6.
+    let apiValidPages=[1,3,4,5,7,8,9] // the pages 2 and 6 of our API doesn´t have any people with vehicles available
+    let randomIndexOne=Math.floor(Math.random()*7)
+    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 2 and 6.
+    let randomIndexTwo=Math.floor(Math.random()*7)
+    let randomPageTwo= apiValidPages[randomIndexTwo]
       function isNumber(obj) {
             return obj.length !== 0
       }
@@ -60,10 +62,9 @@ class App extends Component {
         })
         console.log(this.state.vehicleOneUrl)
 
-
+/*********** VEHICLES API REQUEST PLAYER ONE *******/
     const urlVehicles=this.state.vehicleOneUrl
-     
-     fetch(urlVehicles) //API peticion for the vehicle
+    fetch(urlVehicles) //API peticion for the vehicle
        .then(results => {
         return results.json();
        })
@@ -80,8 +81,57 @@ class App extends Component {
       })
       console.log( this.state.vehicleOneName)
   })
-  })
 
+
+/****** PEOPLE API RESQUEST PLAYER TWO *******/
+
+      fetch('https://swapi.co/api/people/?page=' + randomPageTwo)// API peticion for the player
+      .then(results => {
+        return results.json();
+       })
+      .then(data => {
+        let dataPlayers= data.results
+        let arrByVehicle= dataPlayers.filter(filteredByName)// used to filter the array of people, we don't want those ones who doesn't have vehicles
+        let arrLenght=arrByVehicle.length //The length of the filtered array(only people with vehicles is in)
+        let playerIndex= Math.floor(Math.random()*arrLenght)// choose a random vehicle from the filtered array
+        console.log(dataPlayers)
+        console.log(arrByVehicle)
+        console.log(arrLenght)
+        console.log(arrByVehicle[playerIndex])
+        console.log(arrByVehicle[playerIndex].vehicles)
+        console.log(arrByVehicle[playerIndex].vehicles.length)
+        console.log('---------------')
+        let randomUrl= Math.floor(Math.random()*(arrByVehicle[playerIndex].vehicles.length))
+        console.log(randomUrl)
+        let urlOne=arrByVehicle[playerIndex].vehicles[randomUrl]
+        console.log(urlOne)
+        this.setState({ 
+          playerTwo: arrByVehicle[playerIndex],
+          vehicleTwoUrl: arrByVehicle[playerIndex].vehicles[randomUrl]
+        })
+        console.log(this.state.playerTwo)
+
+/*********** VEHICLES API REQUEST PLAYER TWO *******/
+    const urlVehicles=this.state.vehicleTwoUrl
+    fetch(urlVehicles) //API peticion for the vehicle
+       .then(results => {
+        return results.json();
+       })
+    .then(data => {
+      console.log(urlVehicles)
+      console.log(data)
+      console.log(data.name)
+      console.log(data.max_atmosphering_speed)
+      console.log(data.cargo_capacity)
+      this.setState({
+        vehicleTwoName: data.name,
+        speedTwo: data.max_atmosphering_speed,
+        cargoTwo: data.cargo_capacity
+      })
+      console.log( this.state.vehicleTwoName)
+  })
+  })
+})
 }
 
   render() {
@@ -104,8 +154,8 @@ class App extends Component {
          <DataVehicleOne speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne}/>
         </div>
         <div style={{ position: "relative", right:"1%", bottom: 6 }}>
-          <VehiclePlayerTwo />
-          <DataVehicleTwo />
+          <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
+          <DataVehicleTwo speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>
       </div>
     )
