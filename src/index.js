@@ -16,14 +16,27 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: []}
+    this.state = { hours:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: []}
+    this.clickHandler = this.clickHandler.bind(this)
+  }
+
+  clickHandler(){
+    console.log('button clicked')
+    let hours = Math.round(Math.round((this.state.amountOfGold / this.state.cargoOne) + 0.5))
+    this.setState({hours: hours})
+    console.log(hours)
   }
 
   componentDidMount(){
-    let apiValidPages=[1,3,4,5,7,8,9] // the pages 2 and 6 of our API doesn´t have any people with vehicles available
-    let randomIndexOne=Math.floor(Math.random()*7)
-    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 2 and 6.
-    let randomIndexTwo=Math.floor(Math.random()*7)
+    /******AMOUNT OF GOLD and DISTANCE ******/
+    let goldQuantity = Math.floor(Math.random()*100)
+    let distance= Math.floor(Math.random()*2000)
+    this.setState({ amountOfGold: goldQuantity, distance: distance})
+ 
+    let apiValidPages=[1,3,4,5,7,8] // the pages 2, 6 and 9 of our API doesn´t have any people with vehicles available
+    let randomIndexOne=Math.floor(Math.random()*6)
+    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 2, 6 and 9.
+    let randomIndexTwo=Math.floor(Math.random()*6)
     let randomPageTwo= apiValidPages[randomIndexTwo]
       function isNumber(obj) {
             return obj.length !== 0
@@ -45,22 +58,12 @@ class App extends Component {
         let arrByVehicle= dataPlayers.filter(filteredByName)// used to filter the array of people, we don't want those ones who doesn't have vehicles
         let arrLenght=arrByVehicle.length //The length of the filtered array(only people with vehicles is in)
         let playerIndex= Math.floor(Math.random()*arrLenght)// choose a random vehicle from the filtered array
-        console.log(dataPlayers)
-        console.log(arrByVehicle)
-        console.log(arrLenght)
-        console.log(arrByVehicle[playerIndex])
-        console.log(arrByVehicle[playerIndex].vehicles)
-        console.log(arrByVehicle[playerIndex].vehicles.length)
-        console.log('---------------')
         let randomUrl= Math.floor(Math.random()*(arrByVehicle[playerIndex].vehicles.length))
-        console.log(randomUrl)
         let urlOne=arrByVehicle[playerIndex].vehicles[randomUrl]
-        console.log(urlOne)
         this.setState({ 
           playerOne: arrByVehicle[playerIndex],
           vehicleOneUrl: arrByVehicle[playerIndex].vehicles[randomUrl]
         })
-        console.log(this.state.vehicleOneUrl)
 
 /*********** VEHICLES API REQUEST PLAYER ONE *******/
     const urlVehicles=this.state.vehicleOneUrl
@@ -69,18 +72,13 @@ class App extends Component {
         return results.json();
        })
     .then(data => {
-      console.log(urlVehicles)
-      console.log(data)
-      console.log(data.name)
-      console.log(data.max_atmosphering_speed)
-      console.log(data.cargo_capacity)
       this.setState({
         vehicleOneName: data.name,
         speedOne: data.max_atmosphering_speed,
         cargoOne: data.cargo_capacity
       })
-      console.log( this.state.vehicleOneName)
   })
+
 
 
 /****** PEOPLE API RESQUEST PLAYER TWO *******/
@@ -94,22 +92,13 @@ class App extends Component {
         let arrByVehicle= dataPlayers.filter(filteredByName)// used to filter the array of people, we don't want those ones who doesn't have vehicles
         let arrLenght=arrByVehicle.length //The length of the filtered array(only people with vehicles is in)
         let playerIndex= Math.floor(Math.random()*arrLenght)// choose a random vehicle from the filtered array
-        console.log(dataPlayers)
-        console.log(arrByVehicle)
-        console.log(arrLenght)
-        console.log(arrByVehicle[playerIndex])
-        console.log(arrByVehicle[playerIndex].vehicles)
-        console.log(arrByVehicle[playerIndex].vehicles.length)
-        console.log('---------------')
         let randomUrl= Math.floor(Math.random()*(arrByVehicle[playerIndex].vehicles.length))
-        console.log(randomUrl)
         let urlOne=arrByVehicle[playerIndex].vehicles[randomUrl]
-        console.log(urlOne)
         this.setState({ 
           playerTwo: arrByVehicle[playerIndex],
           vehicleTwoUrl: arrByVehicle[playerIndex].vehicles[randomUrl]
         })
-        console.log(this.state.playerTwo)
+
 
 /*********** VEHICLES API REQUEST PLAYER TWO *******/
     const urlVehicles=this.state.vehicleTwoUrl
@@ -118,20 +107,16 @@ class App extends Component {
         return results.json();
        })
     .then(data => {
-      console.log(urlVehicles)
-      console.log(data)
-      console.log(data.name)
-      console.log(data.max_atmosphering_speed)
-      console.log(data.cargo_capacity)
       this.setState({
         vehicleTwoName: data.name,
         speedTwo: data.max_atmosphering_speed,
         cargoTwo: data.cargo_capacity
       })
-      console.log( this.state.vehicleTwoName)
-  })
   })
 })
+  })
+
+
 }
 
   render() {
@@ -145,13 +130,13 @@ class App extends Component {
           <PlayerTwo nameTwo={this.state.playerTwo}/>
         </div>
         <Score />
-        <Gold />
-        <Distance />
-        <PlayButton />
+        <Gold gold={this.state.amountOfGold}/>
+        <Distance distance={this.state.distance}/>
+        <PlayButton clickHandler={this.clickHandler}/>
         <ChangePlayers />
         <div className="player-one" style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
-         <DataVehicleOne speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne}/>
+         <DataVehicleOne hours={this.state.hours} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
         </div>
         <div style={{ position: "relative", right:"1%", bottom: 6 }}>
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
