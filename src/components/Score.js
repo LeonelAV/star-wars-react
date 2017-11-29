@@ -14,7 +14,7 @@ class Score extends Component {
     }
     return (
       <div>
-        <h2 style={style}>1 - 1</h2>
+        <h2 style={style}>{this.props.scoreOne} - {this.props.scoreTwo}</h2>
       </div>
     )
   }

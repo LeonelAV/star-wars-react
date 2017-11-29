@@ -16,7 +16,7 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0}
+    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0, scoreOne: 0, scoreTwo: 0}
     this.clickHandler = this.clickHandler.bind(this)
   }
 
@@ -27,19 +27,26 @@ class App extends Component {
     let tripsTwo = Math.round(Math.round((this.state.amountOfGold / this.state.cargoTwo) + 0.5))// Para arredondar para cima sempre
     let hoursTwo= (tripsTwo*2 + tripsTwo*(this.state.distance/this.state.speedTwo)).toFixed(2)
     this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo})
-    console.log(tripsOne)
-    console.log(tripsTwo)
+    if(hoursOne > hoursTwo){
+      this.setState({scoreOne: this.state.scoreOne +1})
+    } else {
+      this.setState({scoreTwo: this.state.scoreTwo +1})
+    }
   }
 
   componentDidMount(){
-    /******AMOUNT OF GOLD and DISTANCE ******/
+    /******AMOUNT OF GOLD , DISTANCE  ******/
     let goldQuantity = Math.floor(Math.random()*100) +1
     let distance= Math.floor(Math.random()*2000) + 1
     this.setState({ amountOfGold: goldQuantity, distance: distance})
+
+    /***** SCORE SET UP *****/
+    
+
  
-    let apiValidPages=[1,3,4,5,7,8] // the pages 2, 6 and 9 of our API doesn´t have any people with vehicles available
+    let apiValidPages=[1,2,4,5,7,8] // the pages 3, 6 and 9 of our API doesn´t have any people with vehicles available
     let randomIndexOne=Math.floor(Math.random()*6)
-    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 2, 6 and 9.
+    let randomPageOne= apiValidPages[randomIndexOne]// random page of the API excluding page 3, 6 and 9.
     let randomIndexTwo=Math.floor(Math.random()*6)
     let randomPageTwo= apiValidPages[randomIndexTwo]
       function isNumber(obj) {
@@ -133,7 +140,7 @@ class App extends Component {
           <h2 style={{color:"white", fontWeight:400}}>VS</h2>
           <PlayerTwo nameTwo={this.state.playerTwo}/>
         </div>
-        <Score />
+        <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
         <PlayButton clickHandler={this.clickHandler}/>
