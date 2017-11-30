@@ -16,20 +16,18 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0, scoreOne: 0, scoreTwo: 0, youWon:false, showData: false}
+    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0, scoreOne: 0, scoreTwo: 0, youWon:false, showData: false,hoursOne:0, hoursTwo:0}
     this.clickHandler = this.clickHandler.bind(this)
     this.changeFunction = this.changeFunction.bind(this)
     this.changePlayers=this.changePlayers.bind(this)
-    this.playerOne=this.playerOne.bind(this)
-    this.playerTwo=this.playerTwo.bind(this)
     this.goldAndQuantity= this.goldAndQuantity.bind(this)
   }
+
 
 
   componentDidMount(){
     return this.changeFunction();
   }
-   
   
   changeFunction(){
     this.goldAndQuantity();
@@ -136,36 +134,30 @@ class App extends Component {
              speedTwo: data.max_atmosphering_speed,
              cargoTwo: data.cargo_capacity
            })
-       this.state.cargoTwo === 'unknown' ? this.state.cargoTwo=20 : this.state.cargoTwo=this.state.cargoTwo // this line give the value of 20 to the vehicles who have the cargo capacity unknown
+           this.state.cargoTwo === 'unknown' ? this.state.cargoTwo=20 : this.state.cargoTwo=this.state.cargoTwo // this line give the value of 20 to the vehicles who have the cargo capacity unknown
          })
       })
   }
 
 
   clickHandler(){
-    console.log('button clicked')
     let tripsOne = Math.round(Math.round((this.state.amountOfGold / this.state.cargoOne) + 0.5))
     let hoursOne= (tripsOne*2 + tripsOne*(this.state.distance/this.state.speedOne)).toFixed(2)
     let tripsTwo = Math.round(Math.round((this.state.amountOfGold / this.state.cargoTwo) + 0.5))
     let hoursTwo= (tripsTwo*2 + tripsTwo*(this.state.distance/this.state.speedTwo)).toFixed(2)
     this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo, showData: true})
-    if (hoursOne < hoursTwo) {
-      console.log('if' + hoursOne, hoursTwo)
-      this.setState({scoreOne: this.state.scoreOne +1, youWon:true})
-       } else {
-      console.log('else' + hoursOne, hoursTwo)
-      this.setState({scoreTwo: this.state.scoreTwo +1})
+    hoursOne < hoursTwo ? this.setState({scoreOne: this.state.scoreOne +1, youWon:true}) : this.setState({scoreTwo: this.state.scoreTwo +1})
     }
-  }
-
+  
   changePlayers(){
     this.setState({showData: false, youWon: false})
     this.changeFunction();
-}
+  }
+
+  
 
   render() {
-    console.log(this.state.hoursOne)
-    console.log(this.state.hoursTwo)
+    
     return (
       <div className="App">
         <YouWon youWon={this.state.youWon}/>
