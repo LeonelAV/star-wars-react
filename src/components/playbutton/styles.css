@@ -1,0 +1,19 @@
+
+:local(.Play) {
+   position: absolute;
+   left: 46%;
+   bottom: 10%;
+ }
+
+
+button {
+  cursor:pointer;
+  background-color:#FF9800; 
+  color: white;
+  border: none; 
+  border-radius:5%; 
+  width: 136px;
+  height: 49px; 
+  font-family: Lato, sans-Serif;
+  box-shadow:2px 2px 50px -2px black;
+}

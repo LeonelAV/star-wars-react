@@ -5,7 +5,7 @@ import PlayerTwo from './components/PlayerTwo';
 import Score from './components/Score';
 import Gold from './components/Gold';
 import Distance from './components/Distance'
-import PlayButton from './components/PlayButton';
+import PlayButton from './components/playbutton/PlayButton';
 import ChangePlayers from './components/ChangePlayers';
 import VehiclePlayerOne from './components/VehiclePlayerOne';
 import DataVehicleOne from './components/DataVehicleOne';
@@ -197,8 +197,6 @@ class App extends Component {
         <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
-        <PlayButton clickHandler={this.clickHandler} />
-        <ChangePlayers changePlayers={this.changePlayers}/>
         <div className="player-one" style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
          <DataVehicleOne showData={this.state.showData} hoursOne={this.state.hoursOne} tripsOne={this.state.tripsOne} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
@@ -206,6 +204,10 @@ class App extends Component {
         <div style={{ position: "relative", right:"1%", bottom: 6 }}>
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
           <DataVehicleTwo showData={this.state.showData} hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
+        </div>
+        <div>
+          <PlayButton clickHandler={this.clickHandler} />
+          <ChangePlayers changePlayers={this.changePlayers}/>
         </div>
       </div>
     )
