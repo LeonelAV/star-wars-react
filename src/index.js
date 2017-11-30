@@ -16,7 +16,29 @@ import YouWon from './components/YouWon';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { trips:0, distance: 0, amountOfGold: 0, playerOne: [], vehicleOneName:'', speedOne:0, cargoOne:0, playerTwo: [], cargoTwo: 0, speedTwo: 0, scoreOne: 0, scoreTwo: 0, youWon:false, showData: false,hoursOne:0, hoursTwo:0}
+    this.state = { 
+      amountOfGold: 0,
+      distance:0,
+      showData: false,
+      youWon: false,
+      playerOne: [],
+      vehicleOneUrl:'',
+      vehicleOneName:'',
+      speedOne:0,
+      cargoOne:0,
+      tripsOne:0,
+      hoursOne:0,
+      scoreOne:0,
+      playerTwo: [],
+      vehicleTwoUrl:'',
+      vehicleTwoName:'',
+      speedTwo:0,
+      cargoTwo:0,
+      tripsTwo:0,
+      hoursTwo:0,
+      scoreTwo:0
+    }
+
     this.clickHandler = this.clickHandler.bind(this)
     this.changeFunction = this.changeFunction.bind(this)
     this.changePlayers=this.changePlayers.bind(this)
@@ -26,7 +48,7 @@ class App extends Component {
 
 
   componentDidMount(){
-    return this.changeFunction();
+    this.changeFunction();
   }
   
   changeFunction(){
@@ -146,8 +168,15 @@ class App extends Component {
     let tripsTwo = Math.round(Math.round((this.state.amountOfGold / this.state.cargoTwo) + 0.5))
     let hoursTwo= (tripsTwo*2 + tripsTwo*(this.state.distance/this.state.speedTwo)).toFixed(2)
     this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo, showData: true})
-    hoursOne < hoursTwo ? this.setState({scoreOne: this.state.scoreOne +1, youWon:true}) : this.setState({scoreTwo: this.state.scoreTwo +1})
+    if(hoursOne < hoursTwo) {
+      return this.setState((prevState, props) => ({
+        scoreOne: prevState.scoreOne + 1, youWon:true}))
+    } else { 
+      return this.setState((prevState, props) => ({
+        scoreTwo: prevState.scoreTwo + 1}))
     }
+  }
+
   
   changePlayers(){
     this.setState({showData: false, youWon: false})
@@ -157,7 +186,6 @@ class App extends Component {
   
 
   render() {
-    
     return (
       <div className="App">
         <YouWon youWon={this.state.youWon}/>
@@ -169,7 +197,7 @@ class App extends Component {
         <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
-        <PlayButton clickHandler={this.clickHandler}/>
+        <PlayButton clickHandler={this.clickHandler} />
         <ChangePlayers changePlayers={this.changePlayers}/>
         <div className="player-one" style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
