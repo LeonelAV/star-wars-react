@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class PlayerTwo extends Component {
-
-
   render(){
     return (
       <div >

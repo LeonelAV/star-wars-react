@@ -10,7 +10,7 @@ class YouWon extends Component{
       color:"#8BC34A",
       fontFamily:"Lato, sans-serif",
       fontWeight:"200",
-      display:"none"
+      display:`${this.props.youWon ? 'inline' : 'none'}`
     }
     return <h1 style={ style }>YOU WON!!!</h1>
   }}

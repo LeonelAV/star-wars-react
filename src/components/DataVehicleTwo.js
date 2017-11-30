@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class DataVehicleTwo extends Component{
   render(){
     return (
-      <div style={{ lineHeight:"0.3",position:"absolute", top:2, right:"20%" }}>
+      <div style={{ display:`${this.props.showData ? 'inline' : 'none'}`, lineHeight:"0.3",position:"absolute", top:2, right:"20%" }}>
         <div style={{color:"red"}}>
           <h2>{this.props.hoursTwo} hours</h2>
           <h2>{this.props.tripsTwo} trips</h2>
