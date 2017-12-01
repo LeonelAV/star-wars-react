@@ -1,0 +1,16 @@
+.data-vehicle-one {
+  line-height:0.3px;
+  position: absolute;
+  top:25px;
+  left: 22%;
+}
+
+.hours-trip-one h2{
+  color: #2196F3 ;
+  font-weight: 200;
+}
+
+.speed-cargo-one h4{
+ color: white;
+ font-weight: 200;
+}

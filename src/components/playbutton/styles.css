@@ -1,12 +1,11 @@
 
-:local(.Play) {
+.Play {
    position: absolute;
    left: 46%;
    bottom: 10%;
- }
+}
 
-
-button {
+.Play button {
   cursor:pointer;
   background-color:#FF9800; 
   color: white;

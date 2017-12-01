@@ -1,0 +1,17 @@
+.gold {
+  position:relative;
+  left:45%;
+}
+
+.gold img {
+  transform: rotate(-90deg); 
+  width:65px;
+  float: left;
+}
+
+.gold h2 {
+  float: left; 
+  margin-left:20px; 
+  color:white;
+  font-weight:200;
+}

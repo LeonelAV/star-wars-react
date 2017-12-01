@@ -1,0 +1,9 @@
+.you-won {
+  position: absolute;
+  left: 40%;
+  top: 19;
+  font-size: 54; 
+  color:#8BC34A;
+  font-family:Lato, sans-serif;
+  font-weight:200;
+}

@@ -1,0 +1,17 @@
+.distance {
+  position: absolute; 
+  left: 45.5%; 
+  top: 60%; 
+}
+
+.distance img {
+  width:60px;
+  float: left; 
+}
+
+.distance h2 {
+  float:left;
+  margin-left:20px;
+  color: white;
+  font-weight:100;
+}

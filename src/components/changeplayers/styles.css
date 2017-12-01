@@ -1,0 +1,22 @@
+.change {
+   position: absolute;
+   bottom: 10%;
+   right: 17%;
+}
+
+.change button {
+  cursor: pointer;
+  background-color: #03A9F4;
+  border-radius: 15%;
+  width: 110px;
+  height:40px; 
+  border: none; 
+  color: white;
+  font-family:Lato, sans-Serif;
+  box-shadow: 2px 2px 50px -2px black;
+}
+
+
+
+
+

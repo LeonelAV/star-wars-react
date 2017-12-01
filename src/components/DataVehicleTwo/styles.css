@@ -1,0 +1,17 @@
+.data-two {
+  line-height:2px;
+  position: absolute;
+  top:31px; 
+  right: 22.5%;
+}
+
+.hours-trip-two h2{
+  color: red;
+  font-weight: 200;
+}
+
+.speed-cargo-two h4{
+  color: white;
+  font-weight: 200;
+}
+

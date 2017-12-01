@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PlayerOne from './components/PlayerOne';
-import PlayerTwo from './components/PlayerTwo';
-import Score from './components/Score';
-import Gold from './components/Gold';
-import Distance from './components/Distance'
+import PlayerOne from './components/PlayerOne/PlayerOne';
+import PlayerTwo from './components/PlayerTwo/PlayerTwo';
+import Score from './components/Score/Score';
+import Gold from './components/Gold/Gold';
+import Distance from './components/Distance/Distance'
 import PlayButton from './components/playbutton/PlayButton';
-import ChangePlayers from './components/ChangePlayers';
-import VehiclePlayerOne from './components/VehiclePlayerOne';
-import DataVehicleOne from './components/DataVehicleOne';
-import VehiclePlayerTwo from './components/VehiclePlayerTwo';
-import DataVehicleTwo from './components/DataVehicleTwo';
-import YouWon from './components/YouWon';
+import ChangePlayers from './components/changeplayers/ChangePlayers';
+import VehiclePlayerOne from './components/VehiclePlayerOne/VehiclePlayerOne';
+import DataVehicleOne from './components/DataVehicleOne/DataVehicleOne';
+import VehiclePlayerTwo from './components/VehiclePlayerTwo/VehiclePlayerTwo';
+import DataVehicleTwo from './components/DataVehicleTwo/DataVehicleTwo';
+import YouWon from './components/YouWon/YouWon';
 
 class App extends Component {
   constructor(props){
@@ -197,7 +197,7 @@ class App extends Component {
         <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
-        <div className="player-one" style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
+        <div style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
          <DataVehicleOne showData={this.state.showData} hoursOne={this.state.hoursOne} tripsOne={this.state.tripsOne} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
         </div>

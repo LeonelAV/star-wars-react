@@ -1,0 +1,14 @@
+.vehicle-player-two img {
+  position: absolute;
+  bottom:0px;
+  left:72%;
+  width:65px;
+}
+
+.vehicle-player-two h3 {
+  color:white;
+  position: absolute;
+  left:68%; 
+  bottom:-52px;
+  font-weight: 200;
+}
