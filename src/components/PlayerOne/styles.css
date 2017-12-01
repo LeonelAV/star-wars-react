@@ -2,17 +2,20 @@
 .player-one h2 {
   color:#2196F3;
   margin: 0;
+  font-weight:200;
 }
 
 .player-one h3 {
   color: white;
   margin: 0;
-  font-weight:400;
+  font-weight:200;
+  font-size: 24px;
+  padding-top: 3px;
 }
 
 .player-one  h4 {
   color:white;
   margin: 0; 
-  font-weight:400;
+  font-weight:200;
 }
 

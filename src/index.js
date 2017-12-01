@@ -138,7 +138,7 @@ class App extends Component {
         let arrLenght=arrByVehicle.length //The length of the filtered array(only people with vehicles is in)
         let playerIndex= Math.floor(Math.random()*arrLenght)// choose a random vehicle from the filtered array
         let randomUrl= Math.floor(Math.random()*(arrByVehicle[playerIndex].vehicles.length))
-        let urlOne=arrByVehicle[playerIndex].vehicles[randomUrl]
+        // let urlOne=arrByVehicle[playerIndex].vehicles[randomUrl]
         this.setState({ 
           playerTwo: arrByVehicle[playerIndex],
           vehicleTwoUrl: arrByVehicle[playerIndex].vehicles[randomUrl]
@@ -187,9 +187,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{margin:"0 auto"}}>
         <YouWon youWon={this.state.youWon}/>
-        <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:100}}>
+        <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:100, maxWidth:980, margin:"0 auto"}}>
           <PlayerOne nameOne={this.state.playerOne} />
           <h2 style={{color:"white", fontWeight:400}}>VS</h2>
           <PlayerTwo nameTwo={this.state.playerTwo}/>
@@ -205,7 +205,7 @@ class App extends Component {
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
           <DataVehicleTwo showData={this.state.showData} hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>
-        <div>
+          <div style={{ position: "relative", bottom: -216, maxWidth: 956, margin:" 0 auto"}}>
           <PlayButton clickHandler={this.clickHandler} />
           <ChangePlayers changePlayers={this.changePlayers}/>
         </div>

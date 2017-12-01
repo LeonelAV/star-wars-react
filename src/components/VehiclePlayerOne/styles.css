@@ -2,7 +2,7 @@
   position: absolute;
   bottom:6px; 
   left:24%;
-  width:65px;
+  width:50px;
 }
 
 .vehicle-player-one h3 {
@@ -11,4 +11,6 @@
   left:22%;
   bottom:-47px;
   font-weight: 200;
+ 
+
 }

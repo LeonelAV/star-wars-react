@@ -1,8 +1,6 @@
 
 .Play {
-   position: absolute;
-   left: 46%;
-   bottom: 10%;
+  float: left;
 }
 
 .Play button {

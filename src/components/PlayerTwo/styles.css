@@ -2,16 +2,19 @@
 .player-two h2 {
   color:#EE4235; 
   margin: 0;
+  font-weight:200;
 }
 
 .player-two h3 {
   color:white;
   margin: 0; 
   font-weight:200;
+  font-size: 24px;
+  padding-top: 3px;
 }
 
 .player-two  h4 {
   color:white; 
   margin: 0;
-  font-weight:400;
+  font-weight:200;
 }

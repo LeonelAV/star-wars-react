@@ -1,7 +1,6 @@
 .change {
-   position: absolute;
-   bottom: 10%;
-   right: 17%;
+  float:right;
+  margin-right:10px;
 }
 
 .change button {
