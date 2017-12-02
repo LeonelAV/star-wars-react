@@ -187,9 +187,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" style={{margin:"0 auto"}}>
+      <div className="App">
         <YouWon youWon={this.state.youWon}/>
-        <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:100, maxWidth:980, margin:"0 auto"}}>
+        <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:70 }}>
           <PlayerOne nameOne={this.state.playerOne} />
           <h2 style={{color:"white", fontWeight:400}}>VS</h2>
           <PlayerTwo nameTwo={this.state.playerTwo}/>
@@ -197,11 +197,11 @@ class App extends Component {
         <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
-        <div style={{ position: "relative", right:"6.5%", top: "150%", width:"148%" }}>
+        <div style={{ position: "relative", right:"3%", top:22 }}>
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
          <DataVehicleOne showData={this.state.showData} hoursOne={this.state.hoursOne} tripsOne={this.state.tripsOne} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
         </div>
-        <div style={{ position: "relative", right:"1%", bottom: 6 }}>
+        <div style={{ position: "relative", right:"-8%", top: 16 }}>
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
           <DataVehicleTwo showData={this.state.showData} hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>

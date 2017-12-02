@@ -1,10 +1,15 @@
+.score {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 31px;
+}
+
 .score h2 {
-  font-size:80px;
+  font-size:54px;
   color: white;
   text-align: center;
-  letter-spacing:8px;
-  position: relative;
-  font-weight:400; 
-  top: 35px;
-  left: 12px;
+  letter-spacing:21px;
+  font-weight:100; 
+
 }

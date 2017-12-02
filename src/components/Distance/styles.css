@@ -5,8 +5,10 @@
 }
 
 .distance img {
-  width:60px;
+  width:52px;
   float: left; 
+  position: relative;
+  top: 10px;
 }
 
 .distance h2 {
@@ -14,4 +16,8 @@
   margin-left:20px;
   color: white;
   font-weight:100;
+  font-size: 20px;
+  position: relative;
+  top: 7px;
+  right: 5px;
 }
