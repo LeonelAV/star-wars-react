@@ -168,7 +168,8 @@ class App extends Component {
     let hoursOne= (tripsOne*2 + tripsOne*(this.state.distance/this.state.speedOne)).toFixed(2)
     let tripsTwo = Math.round(Math.round((this.state.amountOfGold / this.state.cargoTwo) + 0.5))
     let hoursTwo= (tripsTwo*2 + tripsTwo*(this.state.distance/this.state.speedTwo)).toFixed(2)
-    this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo, showData: true})
+    this.setState({tripsOne: tripsOne, hoursOne: hoursOne, tripsTwo: tripsTwo, hoursTwo: hoursTwo, showData: true, youWon: false})
+    this.playAgain()
     if(hoursOne < hoursTwo) {
       return this.setState((prevState, props) => ({
         scoreOne: prevState.scoreOne + 1, youWon:true}))
@@ -182,6 +183,11 @@ class App extends Component {
   changePlayers(){
     this.setState({showData: false, youWon: false})
     this.changeFunction();
+  }
+
+  playAgain() {
+   this.setState({showData: true})
+   this.changeFunction();
   }
 
   

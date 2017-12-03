@@ -40,4 +40,5 @@
   height: 49px; 
   font-family: Lato, sans-Serif;
   box-shadow:2px 2px 50px -2px black;
+  z-index: 1;
 }
