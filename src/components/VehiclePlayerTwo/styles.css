@@ -25,5 +25,6 @@
   }
   .vehicle-player-two img {
     left: 8%;
+    bottom: 12px;
   }
 }
