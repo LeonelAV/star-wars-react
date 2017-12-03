@@ -14,3 +14,16 @@
   font-size: 18px;
 
 }
+
+@media(max-width: 540px){
+  .vehicle-player-one h3 {
+    width: 32%;
+    position: absolute;
+    left: 10%;
+    font-size: 15px;
+    text-align: center
+  }
+  .vehicle-player-one img {
+    left: 20%;
+  }
+}

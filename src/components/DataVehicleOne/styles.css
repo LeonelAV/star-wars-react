@@ -14,3 +14,17 @@
  color: white;
  font-weight: 200;
 }
+
+@media(max-width: 540px){
+  .data-vehicle-one {
+    left: 13%;
+  }
+  .hours-trip-one h2 {
+    font-size: 18px;
+    width: 132%;
+  }
+  .speed-cargo-one h4 {
+    font-size: 12px;
+    width: 132%;
+  }
+}

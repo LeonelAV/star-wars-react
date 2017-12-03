@@ -21,3 +21,13 @@
   top: 7px;
   right: 5px;
 }
+
+@media(max-width: 540px){
+  .distance{
+    display: inline-grid;
+  }
+  .distance h2 {
+    margin-left: -8px;
+    margin-top: -6px;
+  }
+}

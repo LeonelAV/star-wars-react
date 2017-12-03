@@ -1,0 +1,26 @@
+.vehicle-data-one {
+  position: relative;
+  right:3%;
+  top: 22px;
+}
+
+@media (max-width: 540px) {
+  .vehicle-data-one {
+    position: relative;
+    top: -25px;
+  }
+}
+
+.vehicle-data-two{
+  position: relative;
+  right:-8%;
+  top: 16px;
+}
+
+
+@media (max-width: 540px) {
+  .vehicle-data-two {
+    right: -69%;
+    top: -25px;
+  }
+}

@@ -12,6 +12,7 @@ import DataVehicleOne from './components/DataVehicleOne/DataVehicleOne';
 import VehiclePlayerTwo from './components/VehiclePlayerTwo/VehiclePlayerTwo';
 import DataVehicleTwo from './components/DataVehicleTwo/DataVehicleTwo';
 import YouWon from './components/YouWon/YouWon';
+import style from './style.css';
 
 class App extends Component {
   constructor(props){
@@ -197,18 +198,18 @@ class App extends Component {
         <Score scoreOne={this.state.scoreOne} scoreTwo={this.state.scoreTwo}/>
         <Gold gold={this.state.amountOfGold}/>
         <Distance distance={this.state.distance}/>
-        <div style={{ position: "relative", right:"3%", top:22 }}>
+        <div className="vehicle-data-one" >
          <VehiclePlayerOne vehicleOne={this.state.vehicleOneName}/>
          <DataVehicleOne showData={this.state.showData} hoursOne={this.state.hoursOne} tripsOne={this.state.tripsOne} speedOne= {this.state.speedOne} cargoOne={this.state.cargoOne} amountOfGold={this.state.amountOfGold} />
         </div>
-        <div style={{ position: "relative", right:"-8%", top: 16 }}>
+        <div className="vehicle-data-two" >
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
           <DataVehicleTwo showData={this.state.showData} hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>
-          <div style={{ position: "relative", bottom: -216, maxWidth: 956, margin:" 0 auto"}}>
+          
           <PlayButton clickHandler={this.clickHandler} />
           <ChangePlayers changePlayers={this.changePlayers}/>
-        </div>
+
       </div>
     )
   }
