@@ -4,7 +4,7 @@ import styles from './styles.css';
 class VehiclePlayerOne extends Component{
   render(){
     return (
-      <div className="vehicle-player-one">
+      <div className="vehicle-player-one" style= {styles}>
         <img alt= "" src={"space.png"} />
         <h3 >{this.props.vehicleOne}</h3>
       </div>

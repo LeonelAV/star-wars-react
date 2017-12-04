@@ -5,7 +5,7 @@ class DataVehicleTwo extends Component{
   render(){
     return (
       <div className="data-two" style={{ display:`${this.props.showData ? 'inline' : 'none'}`}} >
-        <div className="hours-trip-two" >
+        <div className="hours-trip-two" style= {styles}>
           <h2>{this.props.hoursTwo} hours</h2>
           <h2>{this.props.tripsTwo} trips</h2>
         </div>

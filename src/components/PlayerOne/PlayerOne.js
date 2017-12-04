@@ -4,7 +4,7 @@ import styles from './styles.css';
 class PlayerOne extends Component {
   render(){
     return (
-      <div className="player-one">
+      <div className="player-one" style= {styles}>
         <h2> Player 1 </h2>
         <h3> {this.props.nameOne.name} </h3>
         <h4> Human </h4>

@@ -5,7 +5,7 @@ class Distance extends Component{
 
   render(){
     return (
-      <div className="distance" >
+      <div className="distance" style= {styles}>
         <img alt="distance" src={"distance.png"}/>
         <h2> {this.props.distance}km </h2>
       </div>

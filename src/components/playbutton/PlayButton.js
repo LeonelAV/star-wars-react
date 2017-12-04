@@ -4,7 +4,7 @@ import styles from './styles.css';
 class PlayButton extends React.Component{
   render(){
     return (
-      <div className="Play">
+      <div className="Play" style= {styles}>
         <button onClick={this.props.clickHandler} >Play</button>
       </div>
     )

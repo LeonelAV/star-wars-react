@@ -50,13 +50,8 @@ class App extends Component {
 
   componentDidMount(){
     this.changeFunction();
-  }
-  
-  changeFunction(){
-    this.goldAndQuantity();
-    this.playerOne();
-    this.playerTwo();
-  }
+ }
+
 
   goldAndQuantity(){
     let goldQuantity = Math.floor(Math.random()*100) +1
@@ -129,7 +124,7 @@ class App extends Component {
     }
 
 /****** PEOPLE API RESQUEST PLAYER TWO *******/
-    fetch('https://swapi.co/api/people/?page=' + randomPageTwo)// API peticion for the player
+    fetch('https://swapi.co/api/people/?page=' + randomPageTwo)// API peticion for the player two 
       .then(results => {
         return results.json();
        })
@@ -162,6 +157,22 @@ class App extends Component {
       })
   }
 
+    changeFunction(){
+    this.goldAndQuantity();
+    this.playerOne();
+    this.playerTwo();
+  }
+
+  changePlayers(){
+    this.setState({showData: false, youWon: false})
+    this.changeFunction();
+  }
+
+  playAgain() {
+    this.setState({showData: true})
+    this.changeFunction();
+  }
+
 
   clickHandler(){
     let tripsOne = Math.round(Math.round((this.state.amountOfGold / this.state.cargoOne) + 0.5))
@@ -179,22 +190,9 @@ class App extends Component {
     }
   }
 
-  
-  changePlayers(){
-    this.setState({showData: false, youWon: false})
-    this.changeFunction();
-  }
-
-  playAgain() {
-   this.setState({showData: true})
-   this.changeFunction();
-  }
-
-  
-
   render() {
     return (
-      <div className="App">
+      <div className="App" style= {style}>
         <YouWon youWon={this.state.youWon}/>
         <div style={{display:"flex", justifyContent:"space-evenly", position:"relative", top:70 }}>
           <PlayerOne nameOne={this.state.playerOne} />
@@ -212,10 +210,8 @@ class App extends Component {
           <VehiclePlayerTwo vehicleTwo={this.state.vehicleTwoName}/>
           <DataVehicleTwo showData={this.state.showData} hoursTwo={this.state.hoursTwo} tripsTwo={this.state.tripsTwo} speedTwo= {this.state.speedTwo} cargoTwo={this.state.cargoTwo}/>
         </div>
-          
           <PlayButton clickHandler={this.clickHandler} />
           <ChangePlayers changePlayers={this.changePlayers}/>
-
       </div>
     )
   }
